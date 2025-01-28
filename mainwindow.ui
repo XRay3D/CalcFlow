@@ -6,24 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>794</width>
-    <height>961</height>
+    <width>534</width>
+    <height>656</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QFormLayout" name="formLayout">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="0,1">
     <item row="0" column="0">
-     <widget class="QLabel" name="lbl_MeasMed">
+     <widget class="QLabel" name="lblMeasMed">
       <property name="text">
        <string>Измеряемая среда</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QComboBox" name="cbx_MeasuredMedium">
+     <widget class="QComboBox" name="cbxMeasuredMedium">
       <item>
        <property name="text">
         <string>Газ</string>
@@ -47,14 +50,17 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="lbl_TypeFlowmeter">
+     <widget class="QLabel" name="lblTypeFlowmeter">
       <property name="text">
        <string>Тип расходомера</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QComboBox" name="cbx_TypeFlowmeter">
+     <widget class="QComboBox" name="cbxTypeFlowmeter">
       <item>
        <property name="text">
         <string>Врезной</string>
@@ -68,14 +74,17 @@
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="lbl_Dn">
+     <widget class="QLabel" name="lblDn">
       <property name="text">
        <string>DN расходомера</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QComboBox" name="cbx_Dn">
+     <widget class="QComboBox" name="cbxDn">
       <item>
        <property name="text">
         <string>25</string>
@@ -133,151 +142,177 @@
       </item>
      </widget>
     </item>
-    <item row="3" column="0" colspan="2">
-     <widget class="QWidget" name="widget" native="true">
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
+    <item row="3" column="0">
+     <widget class="QLabel" name="lblMeasGas">
+      <property name="text">
+       <string>Измеряемый газ</string>
       </property>
-      <layout class="QGridLayout" name="gridLayout" columnstretch="0,1,0">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="cbx_typeOfPressure"/>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="lbl_temperature">
-         <property name="text">
-          <string>Значение темературы среды</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="lbl_viscocityType">
-         <property name="text">
-          <string>Вязкость</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="cbx_paramCalc"/>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="lbl_typeOfPressure">
-         <property name="text">
-          <string>Вид давления среды</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QDoubleSpinBox" name="dsbx_pressure">
-         <property name="maximum">
-          <double>100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="cbx_measGas"/>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="lbl_viscocity">
-         <property name="text">
-          <string>Значение вязкости среды</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QDoubleSpinBox" name="dsbx_viscocity">
-         <property name="maximum">
-          <double>100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="cbx_viscocityType"/>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="lbl_paramCalc">
-         <property name="text">
-          <string>Параметр расчёта</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="lbl_pressure">
-         <property name="text">
-          <string>Значение давления среды</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="cbx_temperature"/>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="lbl_measGas">
-         <property name="text">
-          <string>Измеряемый газ</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QDoubleSpinBox" name="dsbx_OfParamCalcDouble">
-         <property name="maximum">
-          <double>20000.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="lbl_valueOfParamCalc">
-         <property name="text">
-          <string>Значение параметра расчёта</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2">
-        <widget class="QComboBox" name="comboBox"/>
-       </item>
-      </layout>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
-    <item row="5" column="0" colspan="2">
+    <item row="3" column="1">
+     <widget class="QComboBox" name="cbxMeasGas">
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="lblTypeOfPressure">
+      <property name="text">
+       <string>Вид давления среды</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QComboBox" name="cbxTypeOfPressure">
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="lblPressure">
+      <property name="text">
+       <string>Значение давления среды</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QDoubleSpinBox" name="dsbxPressure">
+      <property name="maximum">
+       <double>100.000000000000000</double>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="lblTemperature">
+      <property name="text">
+       <string>Значение темературы среды</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QComboBox" name="cbxTemperature">
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="lblViscocityType">
+      <property name="text">
+       <string>Вязкость</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QComboBox" name="cbxViscocityType">
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="lblViscocity">
+      <property name="text">
+       <string>Значение вязкости среды</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QDoubleSpinBox" name="dsbxViscocity">
+      <property name="maximum">
+       <double>100.000000000000000</double>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="lblParamCalc">
+      <property name="text">
+       <string>Параметр расчёта</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QComboBox" name="cbxParamCalc">
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="lblValueOfParamCalc">
+      <property name="text">
+       <string>Значение параметра расчёта</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="1">
+     <widget class="QDoubleSpinBox" name="dsbxOfParamCalcDouble">
+      <property name="maximum">
+       <double>20000.000000000000000</double>
+      </property>
+      <property name="canHidden" stdset="0">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="0" colspan="2">
      <widget class="QTableView" name="tableView"/>
-    </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="QWidget" name="widget_2" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-      <layout class="QFormLayout" name="formLayout_2">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-      </layout>
-     </widget>
     </item>
    </layout>
   </widget>
@@ -286,8 +321,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>794</width>
-     <height>21</height>
+     <width>534</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

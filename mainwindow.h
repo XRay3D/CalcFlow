@@ -30,16 +30,16 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
-    MyLe* dsbx_S_;
-    MyLe* dsbx_dencity_;
-    MyLe* dsbx_dynamic_viscocity_;
-    MyLe* dsbx_entalpy_;
-    MyLe* dsbx_flow_speed_;
-    MyLe* dsbx_kinematic_viscocity_;
-    MyLe* dsbx_mass_flow_;
-    MyLe* dsbx_value_flow_;
-    MyLe* dsbx_value_;
-    MyLe* dsbx_value_re_;
+    MyLe* dsbxS_;
+    MyLe* dsbxDencity_;
+    MyLe* dsbxDynamic_viscocity_;
+    MyLe* dsbxEntalpy_;
+    MyLe* dsbxFlow_speed_;
+    MyLe* dsbxKinematic_viscocity_;
+    MyLe* dsbxMass_flow_;
+    MyLe* dsbxValue_flow_;
+    MyLe* dsbxValue_;
+    MyLe* dsbxValue_re_;
 
 public:
     MainWindow(QWidget* parent = nullptr);

@@ -13,13 +13,11 @@
 #include <cmath>
 
 Calc::Calc(QObject* parent)
-    : QObject { parent }
-{
+    : QObject{parent} {
 }
 
-void Calc::calc()
-{
-    emit dsbx_S_setValue(S());
+void Calc::calc() {
+    emit dsbxS_setValue(S());
 
     //        Гидравлический диаметр м	Dг	0,05
     //        Динамическая вязкость Па*с	µ	0,0000181
@@ -27,99 +25,96 @@ void Calc::calc()
     //        Площадь трубы м2	S	0,001963495
     //        Re=(Q/3600*Dг)/(ν*S)
 
-    //   emit dsbx_value_re_setValue(Re());
-    // emit dsbx_value_setValue(1 / density_t());
-    //   emit dsbx_mass_flow_setValue(density_t() * flow());
-    if (map.contains(cbx_paramCalc))
-        *map[cbx_paramCalc] = dsbx_OfParamCalcDouble->value();
+    //   emit dsbxValue_re_setValue(Re());
+    // emit dsbxValue_setValue(1 / density_);
+    //   emit dsbxMass_flow_setValue(density_ * flow());
+    if(map.contains(cbxparamCalc))
+        *map[cbxparamCalc] = dsbxOfParamCalcDouble->value();
 
-    static const std::map<QStringView, std::function<void()>, std::less<>> map {
-        { L"Массовый расход", [this] {
-             calc_volume_flow_();
-             // calc_volume_flow();
-             calc_flow_speed();
-             calc_heat_power();
-             specific_volume();
-         } },
-        { L"Объёмный расход", [this] {
-             calc_flow_speed();
-             calc_mass_flow();
-             calc_heat_power();
-             specific_volume();
-         } },
-        { L"Скорость потока", [this] {
-             calc_mass_flow();
-             calc_volume_flow();
-             calc_heat_power();
-             specific_volume();
-         } },
-        { L"Тепловая мощность", [this] {
-             calc_flow_speed();
-             calc_mass_flow();
-             calc_volume_flow();
-             specific_volume();
-         } },
+    static const std::map<QStringView, std::function<void()>, std::less<>> map{
+        {  L"Массовый расход", [this] {
+ calc_volume_flow_();
+ // calc_volume_flow();
+ calc_flow_speed();
+ calc_heat_power();
+ specific_volume();
+ }},
+        {  L"Объёмный расход", [this] {
+ calc_flow_speed();
+ calc_mass_flow();
+ calc_heat_power();
+ specific_volume();
+ }},
+        {  L"Скорость потока", [this] {
+ calc_mass_flow();
+ calc_volume_flow();
+ calc_heat_power();
+ specific_volume();
+ }},
+        {L"Тепловая мощность", [this] {
+ calc_flow_speed();
+ calc_mass_flow();
+ calc_volume_flow();
+ specific_volume();
+ }},
     };
 
-    if (map.contains(cbx_paramCalc))
-        map.at(cbx_paramCalc)();
+    if(map.contains(cbxparamCalc))
+        map.at(cbxparamCalc)();
 
     S();
     Re();
 
-    emit dsbx_dencity_setValue(density_t());
-    emit dsbx_dynamic_viscocity_setValue(dynamic_viscosity_t());
-    emit dsbx_kinematic_viscocity_setValue(kinematic_viscosity_t());
+    emit dsbxDencity_setValue(density_);
+    emit dsbxDynamic_viscocity_setValue(dynamicViscosity_);
+    emit dsbxKinematic_viscocity_setValue(kinematicViscosity_);
 
-    emit dsbx_value_re_setValue(Re_);
-    emit dsbx_S_setValue(S_);
-    emit dsbx_value_flow_setValue(volume_flow_);
-    emit dsbx_entalpy_setValue(entalpy_);
-    emit dsbx_flow_speed_setValue(flow_speed_);
-    emit dsbx_mass_flow_setValue(mass_flow_);
-    emit dsbx_value_setValue(value_);
+    emit dsbxValue_re_setValue(Re_);
+    emit dsbxS_setValue(S_);
+    emit dsbxValue_flow_setValue(volume_flow_);
+    emit dsbxEntalpy_setValue(entalpy_);
+    emit dsbxFlow_speed_setValue(flow_speed_);
+    emit dsbxMass_flow_setValue(mass_flow_);
+    emit dsbxValue_setValue(value_);
 
-    //    ui->emit dsbx_OfParamCalcDouble_setValue((this->*map[cbx_paramCalc])());
+    //    ui->emit dsbxOfParamCalcDouble_setValue((this->*map[cbxparamCalc])());
 }
 
-void Calc::updateMap()
-{
-    if (map.contains(cbx_paramCalc)) {
-        dsbx_OfParamCalcDouble->setValue(*map[cbx_paramCalc]);
-        dsbx_OfParamCalcDouble->setSuffix(map_suff[cbx_paramCalc]);
+void Calc::updateMap() {
+    if(map.contains(cbxparamCalc)) {
+        dsbxOfParamCalcDouble->setValue(*map[cbxparamCalc]);
+        dsbxOfParamCalcDouble->setSuffix(map_suff[cbxparamCalc]);
     }
 }
 
 double Calc::calc_flow_speed() { return flow_speed_ = volume_flow_ / S_ / 3600; }
 
-double Calc::calc_mass_flow() { return mass_flow_ = density_t() * volume_flow_; }
+double Calc::calc_mass_flow() { return mass_flow_ = density_ * volume_flow_; }
 
 double Calc::calc_heat_power() { return heat_power_ = flow_t(); }
 
 double Calc::calc_volume_flow() { return volume_flow_ = flow_speed_ * S_ * 3600; }
 
-double Calc::calc_volume_flow_() { return volume_flow_ = mass_flow_ / density_t(); }
+double Calc::calc_volume_flow_() { return volume_flow_ = mass_flow_ / density_; }
 
-double Calc::specific_volume() { return value_ = 1 / density_t(); }
+double Calc::specific_volume() { return value_ = 1 / density_; }
 
-double Calc::Dn_t_(const QString& str)
-{
+double Calc::Dn_t_(const QString& str) {
     static QRegularExpression re(R"((.+\s)?(\d+))");
-    if (auto match { re.match(str) }; match.hasMatch()) {
-        bool ok {};
+    if(auto match{re.match(str)}; match.hasMatch()) {
+        bool ok{};
         Dn_ = match.captured(2).toDouble(&ok);
     }
     S();
     return Dn_;
 }
 
-double Calc::flow_t() { return (map.contains(cbx_paramCalc)) ? *map[cbx_paramCalc] : 0.0; }
+double Calc::flow_t() { return (map.contains(cbxparamCalc)) ? *map[cbxparamCalc] : 0.0; }
 
-double Calc::Re() { return Re_ = ((volume_flow_ / 3600) * (Dn_ / 1000)) / (S_ * kinematic_viscosity_t()); }
+double Calc::Re() { return Re_ = ((volume_flow_ / 3600) * (Dn_ / 1000)) / (S_ * kinematicViscosity_); }
 
-void Calc::setCbx_paramCalc(const QString& newCbx_paramCalc)
-{
-    cbx_paramCalc = newCbx_paramCalc;
+void Calc::setCbx_paramCalc(const QString& newCbx_paramCalc) {
+    cbxparamCalc = newCbx_paramCalc;
     updateMap();
 }
 
